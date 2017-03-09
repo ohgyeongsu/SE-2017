@@ -7,7 +7,7 @@ public class num1 {
 		// 1을 입력하면 내 이름을 출력해라
 		Scanner number = new Scanner(System.in);
 		
-		if(number.nextInt() == 1)
+		if(number.nextInt() == 2)
 		{
 			System.out.println("ohgyeongsu");
 		}
