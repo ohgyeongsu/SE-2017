@@ -1,0 +1,71 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+<dom-module id="my-view1">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+    </style>
+
+    <style>
+      .card-content {
+        width: 300px;
+        height: 250px;
+        overflow: scroll;
+        overflow-x: hidden;
+      }
+    </style>
+
+    <div class="card">
+      <h1>Storage</h1>
+      <center>
+      <paper-card>
+        <div class="card-content">
+          Emmentaler or Emmental is a yellow, medium-hard cheese that originated in the area around Emmental, Switzerland. It is one of the cheeses of Switzerland, and is sometimes known as Swiss cheese.
+          Emmentaler or Emmental is a yellow, medium-hard cheese that originated in the area around Emmental, Switzerland. It is one of the cheeses of Switzerland, and is sometimes known as Swiss cheese.
+        </div>
+        <div class="card-actions">
+          <paper-button raised class="orange">Open</paper-button>
+          <paper-button raised class="yellow">Modify</paper-button>
+        </div>
+      </paper-card>
+      <paper-card>
+        <div class="card-content">
+          Emmentaler or Emmental is a yellow, medium-hard cheese that originated in the area around Emmental, Switzerland. It is one of the cheeses of Switzerland, and is sometimes known as Swiss cheese.
+          Emmentaler or Emmental is a yellow, medium-hard cheese that originated in the area around Emmental, Switzerland. It is one of the cheeses of Switzerland, and is sometimes known as Swiss cheese.
+          Emmentaler or Emmental is a yellow, medium-hard cheese that originated in the area around Emmental, Switzerland. It is one of the cheeses of Switzerland, and is sometimes known as Swiss cheese.
+        </div>
+        <div class="card-actions">
+          <paper-button raised class="orange">Open</paper-button>
+          <paper-button raised class="yellow">Modify</paper-button>
+        </div>
+      </paper-card>
+      </center>
+      <paper-button raise class="red" type="button" onclick="location='http://localhost:8080/view2';">new</paper-button>
+
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'my-view1',
+    });
+  </script>
+</dom-module>

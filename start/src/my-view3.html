@@ -1,0 +1,62 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/paper-audio-player/paper-audio-player.html">
+<link rel="import" href="../bower_components/fancy-carousel/fancy-carousel.html">
+
+
+<dom-module id="my-view3">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+    </style>
+
+    <style>
+      .music {
+        padding: 5px;
+      }
+    </style>
+
+    <style>
+      .picture {
+        width: 1000px;
+        height: 500px;
+      }
+    </style>
+
+
+    <div class="card">
+      <h1>Other</h1>
+      <paper-audio-player class="music" src="http://dl.bgms.kr/download/YpRcX/mp3/rainy+garden" title="Essbee - rainy garden" color="#F05C38"></paper-audio-player>
+      <paper-audio-player class="music" src="http://dl.bgms.kr/download/NeDY3/mp3/Sky+Fighters+-+Into+The+Fire" title="Sky Fighters - Into The Fire" color="#F05C38"></paper-audio-player>
+
+      <fancy-carousel class="picture" transition-type="spread">
+        <img src="https://app-layout-assets.appspot.com/assets/bg1.jpg">
+        <img src="https://app-layout-assets.appspot.com/assets/bg2.jpg">
+        <img src="https://app-layout-assets.appspot.com/assets/bg3.jpg">
+        <img src="https://app-layout-assets.appspot.com/assets/bg4.jpg">
+      </fancy-carousel>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'my-view3',
+    });
+  </script>
+
+ 
+</dom-module>
