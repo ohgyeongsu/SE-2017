@@ -1,0 +1,111 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/iron-form/iron-form.html">
+
+<dom-module id="memories-view">
+  <template>
+   <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+    </style>
+    <style>
+      .card-content {
+        border: 3px solid black;
+        width: 280px;
+        height: 250px;
+        overflow: scroll;
+        overflow-x: hidden;
+      }
+    </style>
+     <style>
+      .card-actions {
+        border-right: 3px solid black;
+        border-left: 3px solid black;
+        border-bottom: 3px solid black;
+      }
+    </style>
+
+    <style>
+    .card2 {
+      height: 500px;
+      overflow: scroll;
+      overflow-x: hidden;
+    }
+    </style>
+
+    <div class="card">
+
+    <h1>Storage</h1>
+    <div class="card2">
+      <template is="dom-repeat" items="[[notes]]">
+      <paper-card>
+        <div class="card-content">
+          {{item.content}}
+        </div>
+        <div class="card-actions">
+        <center>
+        
+        <form is="iron-form" id="form" method="post" content-type="application/json" action="/api/delete">
+            <input type="hidden" name="content" id="content"></input>
+            <paper-button raised class="yellow" id="modifyButton">Modify</paper-button>
+            <paper-button raised class="green" id="deleteButton">Delete</paper-button>
+        </form>
+        </center>
+        </div>
+        <br></br>
+      </paper-card>
+      </template>
+    </div>
+    <paper-button raise class="green" type="button" onclick="location='http://localhost:3000/write';">New</paper-button>
+
+      
+    </div>
+    
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'memories-view',
+      ready: function() {
+        var request = document.createElement('iron-ajax');
+        this.notes = [];
+        var self = this;
+        request.handleAs = 'json';
+        request.method = 'post';
+        request.url = '/api/list/';
+        var req = request.generateRequest();
+        req.completes.then(function(response) {
+          console.log(self.notes);
+          for (let item of response.response.item) {
+            console.log(item);
+            self.push('notes', item);
+          }
+        });
+      },
+      ready2: function() {
+        Polymer.dom(this.root).querySelector('#deleteButton').addEventListener('tap', this._deleteForm.bind(this) );
+      },
+      _deleteForm: function() {
+        var content = Polymer.dom(this.root).querySelector('#content');
+        Polymer.dom(this.root).querySelector('#form').submit();
+      }
+    });
+  </script>
+</dom-module>
